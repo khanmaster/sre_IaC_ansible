@@ -1,6 +1,6 @@
 # Infrastructure as Code (Iac)
 
-```
+```bash
 
 # -*- mode: ruby -*-
  # vi: set ft=ruby :
@@ -21,7 +21,7 @@
     
     controller.vm.network :private_network, ip: "192.168.33.12"
     
-    config.hostsupdater.aliases = ["development.controller"] 
+    # config.hostsupdater.aliases = ["development.controller"] 
     
    end 
  # creating first VM called web  
@@ -36,7 +36,7 @@
      web.vm.network :private_network, ip: "192.168.33.10"
      #   assigning private IP
      
-     config.hostsupdater.aliases = ["development.web"]
+     #config.hostsupdater.aliases = ["development.web"]
      # creating a link called development.web so we can access web page with this link instread of an IP   
          
    end
@@ -50,7 +50,7 @@
      
      db.vm.network :private_network, ip: "192.168.33.11"
      
-     config.hostsupdater.aliases = ["development.db"]     
+     #config.hostsupdater.aliases = ["development.db"]     
    end
  
  
