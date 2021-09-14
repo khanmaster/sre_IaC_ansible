@@ -191,8 +191,19 @@
 #       DB_HOST: mongodb://ubuntu@<ENTER DB IP HERE>:27017/posts?authSource=admin
    become_user: root
    ```
-  - Ensure to set up env var before seeding 
+- Ensure to set up env var before seeding 
 
+### Importing playbooks 
+```
+---
+# Run Mongodb Playbook
+- name: Running MongoDB Playbook
+  import_playbook: mongodb.yml
 
+# Run Nginx Playbook
+- name: Running Nginx Playbook
+  import_playbook: nginx_proxy.yml
+```
+  
 
 
