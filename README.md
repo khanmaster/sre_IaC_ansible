@@ -204,6 +204,33 @@
 - name: Running Nginx Playbook
   import_playbook: nginx_proxy.yml
 ```
-  
+- Diagram to be added for Hybrid infrastructure here
 
+### Let's move onto Hybrid 
+- We need to install dependencies to set up Ansible Vault to secure our AWS access and secret keys
+- Let's install the them using the script 
+```
+!#/bin/bash
+sudo apt update -y
+sudo apt-get install tree -y
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible -y
+sudo apt install python3-pip
 
+pip3 install awscli 
+pip3 install boto boto3 -y
+sudo apt-get upgrade -y
+```  
+- Checking installation
+- `aws --version`
+- Outcome should be as `aws-cli/1.20.40 Python/3.6.9 Linux/4.15.0-151-generic botocore/1.21.40`
+
+- Let's change python to use python3 
+- `alias python=python3`
+
+#### Let's create Ansible vault file to secure our AWS keys
+- In `/etc/ansible` create a folder `mkdir /group_vars/all` 
+- create `pass.yml` with `ansible-vault create pass.yml`
+- `aws_access_key` and `aws_secret_key` copy your keys
+- `ansible db -m ping --ask-vault-pass`
+- `sudo chmod 666 pass.yml`

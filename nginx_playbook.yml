@@ -1,4 +1,6 @@
 # Create a playbook to install nginx web server on web machine
+#aws_access_key: 
+#aws_secret_key: 
 # web 192.168.33.10
 # Let's add the 3 dashes to start the YAML 
 --- 
