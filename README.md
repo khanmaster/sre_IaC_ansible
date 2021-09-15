@@ -110,7 +110,9 @@
 # This is a YAML file to install nginx onto oue web VM using YAML
 ---
 
-- hosts: db
+---
+
+- hosts: awsdb
 
   gather_facts: yes
 
@@ -122,19 +124,19 @@
 
   - name: Remove mongodb file (delete file)
     file:
-      path: /etc/mongodb.conf
+      path: /etc/mongod.conf
       state: absent
 
   - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
     file:
-      path: /etc/mongodb.conf
+      path: /etc/mongod.conf
       state: touch
       mode: u=rw,g=r,o=r
 
 
   - name: Insert multiple lines and Backup
     blockinfile:
-      path: /etc/mongodb.conf
+      path: /etc/mongod.conf
       backup: yes
       block: |
         "storage:
@@ -148,6 +150,7 @@
         net:
           port: 27017
           bindIp: 0.0.0.0"
+
 
 ```
   
